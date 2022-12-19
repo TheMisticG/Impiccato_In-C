@@ -4,7 +4,8 @@
   
 #define MAX_LEN 100 // Massima lunghezza della parola 
   
-int lunghezzaParola; // Lunghezza della parola 
+int lunghezzaParola; // Lunghezza della parola
+int dim_max[30];
 char parola[MAX_LEN]; // Parola da indovinare 
   
 // Funzione per visualizzare l'immagine dell'impiccato 
@@ -126,7 +127,7 @@ void visualizzaParola(char indovinato[])
   
 // Funzione che ritorna 1 se la lettera inserita è quella giusta. 
 // Altrimenti ritorna 0 
-int controllaLettera(char lettera, char indovinato[]) 
+int controllaLettera(char lettera, char indovinato[], int dim_max[]) 
 { 
 	int i; 
 	int risposta = 0; 
@@ -136,16 +137,17 @@ int controllaLettera(char lettera, char indovinato[])
 		if (parola[i] == lettera) { 
 			indovinato[i] = 1; 
 			risposta = 1;
+			dim_max[i] = parola[i];
 		} 
 	}
-	return risposta; 
-} 
-  
+	return risposta;
+}
 int main(){ 
 	char lettera; 
 	int numeroTentativi = 0; 
 	int risposta = 0; 
-  
+	int cont = 0;
+
 	char indovinato[lunghezzaParola]; 
   
 	// Genera una parola casuale 
@@ -167,18 +169,30 @@ int main(){
 		scanf(" %c", &lettera); 
 
 		// Controlla se la lettera inserita è quella giusta 
-		risposta = controllaLettera(lettera, indovinato); 
+		risposta = controllaLettera(lettera, indovinato, dim_max);
 
 		// Se la risposta è 0, incrementa il numero di tentativi 
 		if (risposta == 0){
 			numeroTentativi++;
 		};
 
+		for(int i = 0; i < lunghezzaParola; i++){
+			if(lettera == parola[i]){
+				cont++;
+			}
+		}
+
+		if(cont==lunghezzaParola){
+			printf("Hai indovinato la parola!");
+			free(dim_max);
+			break;
+		}
+
 		// Se tutte le lettere sono state indovinate, esci dal ciclo 
-		if (strcmp(parola, indovinato) == 0){
+		/*if (strcmp(parola, indovinato) == 0){
 			printf("\nHai indovinato la parola!");
 			break;
-		};
+		};*/
 	}
   
 	visualizzaStato(numeroTentativi); 
@@ -190,6 +204,8 @@ int main(){
 	else{
 		printf("\nHai vinto! La parola era %s.\n", parola); 
 	};
+
+	cont = 0;
 
 	return 0; 
 }
