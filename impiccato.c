@@ -7,6 +7,7 @@
 int lunghezzaParola; // Lunghezza della parola
 int dim_max[30];
 char parola[MAX_LEN]; // Parola da indovinare
+srand(time(NULL));
 
 // Funzione per visualizzare l'immagine dell'impiccato
 void visualizzaStato(int numeroTentativi)
