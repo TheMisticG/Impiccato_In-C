@@ -184,7 +184,6 @@ int main(){
 
 		if(cont==lunghezzaParola){
 			printf("Hai indovinato la parola!");
-			free(dim_max);
 			break;
 		}
 
@@ -204,8 +203,6 @@ int main(){
 	else{
 		printf("\nHai vinto! La parola era %s.\n", parola); 
 	};
-
-	cont = 0;
 
 	return 0; 
 }
