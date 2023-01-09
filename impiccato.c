@@ -201,7 +201,7 @@ int main(){
 	visualizzaParola(indovinato);
 
 	if (numeroTentativi > 4){
-		printf("\nHai perso! La parole era %s.\n", parola);
+		printf("\nHai perso! La parola era %s.\n", parola);
 	}
 	else{
 		printf("\nHai vinto! La parola era %s.\n", parola);
