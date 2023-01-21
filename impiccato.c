@@ -7,7 +7,7 @@
 int lunghezzaParola; // Lunghezza della parola
 int dim_max[30];
 char parola[MAX_LEN]; // Parola da indovinare
-srand(time(NULL));
+
 
 // Funzione per visualizzare l'immagine dell'impiccato
 void visualizzaStato(int numeroTentativi)
@@ -101,7 +101,7 @@ void visualizzaStato(int numeroTentativi)
 // Funzione per generare parola casuale
 void generaParola()
 {
-	char parole[][MAX_LEN] = {"avvocato","matematica","programmazione","università"};
+	char parole[][MAX_LEN] = {"avvocato","matematica","universita","ciao"};
 
     srand(time(NULL));
 	// Scegli una parola casuale
@@ -127,7 +127,7 @@ void visualizzaParola(char indovinato[])
 	printf("\n");
 }
 
-// Funzione che ritorna 1 se la lettera inserita è quella giusta.
+// Funzione che ritorna 1 se la lettera inserita Ã¨ quella giusta.
 // Altrimenti ritorna 0
 int controllaLettera(char lettera, char indovinato[], int dim_max[])
 {
@@ -135,7 +135,7 @@ int controllaLettera(char lettera, char indovinato[], int dim_max[])
 	int risposta = 0;
 
 	for (i = 0; i < lunghezzaParola; i++) {
-		// Se la lettera inserita è quella giusta
+		// Se la lettera inserita Ã¨ quella giusta
 		if (parola[i] == lettera) {
 			indovinato[i] = 1;
 			risposta = 1;
@@ -170,15 +170,15 @@ int main(){
 		printf("[Tentativo %d/5]> Inserisci una lettera: ", numeroTentativi+1);
 		scanf(" %c", &lettera);
 
-		// Controlla se la lettera inserita è quella giusta
+		// Controlla se la lettera inserita Ã¨ quella giusta
 		risposta = controllaLettera(lettera, indovinato, dim_max);
 
-		// Se la risposta è 0, incrementa il numero di tentativi
+		// Se la risposta Ã¨ 0, incrementa il numero di tentativi
 		if (risposta == 0){
 			numeroTentativi++;
 		};
 
-		for(int i = 0; i < lunghezzaParola; i++){
+		for(i = 0; i < lunghezzaParola; i++){
 			if(lettera == parola[i]){
 				cont++;
 			}
